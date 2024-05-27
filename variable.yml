@@ -1,0 +1,13 @@
+--- # This is a plabook to write a variable
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+  vars:
+    user: mahesh
+
+  tasks:
+    - name: Creating user {{user}} 
+      user:
+        name: "{{user}}" 

@@ -1,0 +1,12 @@
+--- # This is a playbook to delete directory
+- name: my test playbook
+  hosts: webservers
+  become: true
+  user: ansible
+  connection: ssh
+  tasks:
+    - name: Deleting a directory
+      file:
+        path: /home/ansible/dhanadir
+        state: absent
+...

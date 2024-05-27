@@ -1,0 +1,15 @@
+--- # This is a sample playbook
+- hosts: webservers
+  user: ansible
+  become: true
+  connection: ssh
+
+  tasks:
+    - name: creating a file with ansible playbook
+      file: path=/tmp/dhana.txt state=file
+
+    - name: creating a directory with ansible playbook
+      file: path=/var/dhanadir state=directory
+
+    - name: copying a file from ansible server to host machines
+      copy: src=./linuxfile dest=/home/ansible

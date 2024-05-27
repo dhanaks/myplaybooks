@@ -1,0 +1,6 @@
+--- # This is my first playbook.
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+...

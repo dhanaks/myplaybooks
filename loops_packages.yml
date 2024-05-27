@@ -1,0 +1,16 @@
+--- # This is a playbook to write loops pavkages
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: installing multiple packages
+      yum: name='{{item}}' state=installed
+      with_items:
+        -git
+        -httpd
+        -docker
+        -tree
+        -java
+        - mysql

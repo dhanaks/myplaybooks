@@ -1,0 +1,10 @@
+--- # This is a tasks playbook
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: Installing httpd in webservers
+      action: yum pkg=httpd state=installed
+...

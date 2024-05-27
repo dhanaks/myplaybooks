@@ -1,0 +1,9 @@
+--- # This is a plabook of creating user.
+- hosts: webservers
+  become: yes
+  user: ansible
+  connection: ssh
+  tasks:
+    - name: Creating a user
+      user: name=rohit
+...

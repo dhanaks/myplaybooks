@@ -1,0 +1,42 @@
+--- # This is a playbook to install java and tomcat
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+  
+  tasks:
+    - name: install java on redhat
+      yum:
+        name: java
+        state: installed
+      when: ansible_os_family == "RedHat"
+
+    - name: install java on debian
+      apt:
+        name: default-jdk
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: download tomcat package
+      get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz
+        dest: /opt
+
+    - name: extract tomcat software
+      unarchive:
+        src: /opt/apache-tomcat-9.0.89.tar.gz
+        dest: /opt
+        remote_src: yes
+
+    - name: provide executable permissions 
+      file:
+        path: /opt/apache-tomcat-9.0.89/bin/startup.sh
+        mode: 0777
+
+    - name: start tomcat service
+      shell: nohup ./startup.sh 
+      args:
+        chdir: /opt/apache-tomcat-9.0.89/bin
+        
+
+

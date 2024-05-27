@@ -1,0 +1,12 @@
+--- # This is a playbook to install multiple packages
+- hosts: webservers
+  user: ansbile
+  connection: ssh
+  become: true
+
+  tasks:
+    - name: installing multiple packages into webservers
+      yum:
+        name: ['git', 'docker', 'which', 'httpd', 'tree', 'mysql', 'java', 'wget']
+        state: installed
+...

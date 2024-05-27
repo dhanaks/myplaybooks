@@ -1,0 +1,15 @@
+--- # This is a playbook to write loop users
+- hosts: webservers
+  user: ansible
+  connection: ssh
+  become: true
+
+  tasks:
+    - name: creating multiple users
+      user: name='{{item}}' state=present
+      with_items:
+        - Rajesh
+        - Dhana
+        - Mohit
+        - Pavan
+        - Abhijeet

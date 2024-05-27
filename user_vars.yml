@@ -1,0 +1,13 @@
+--- # This is playbook
+- hosts: all
+  user: ansible
+  connection: ssh
+  become: true
+
+  vars_files:
+    - userfile.yml
+
+  tasks:
+    - name: creating user {{user2}}
+      user:
+        name: "{{user2}}"

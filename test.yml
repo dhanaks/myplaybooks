@@ -1,0 +1,9 @@
+--- # This is a test file.
+- hosts: webservers
+  tasks:
+    - name: Installing httpd in webservers
+      action: yum pkg=httpd state=installed
+
+    - name: Installing mysql in dbservers
+      action: yum pkg=mysql state=installed
+...

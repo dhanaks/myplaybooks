@@ -1,0 +1,11 @@
+--- # This is a playbook to install a package
+- hosts: webservers
+  user: ansible
+    #become: yes
+  connection: ssh
+  tasks:
+    - name: Installing a package in the host machines
+      yum:
+        name: git
+        state: installed
+...

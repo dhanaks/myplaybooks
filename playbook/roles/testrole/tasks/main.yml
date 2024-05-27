@@ -1,0 +1,5 @@
+- name: installing docker into host machines
+  yum:
+    name: docker
+    state: installed
+

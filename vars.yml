@@ -1,0 +1,13 @@
+--- # This is sample variable playbook
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh 
+ 
+  vars:
+    pkgname: tree
+
+  tasks:
+    - name: Install tree package in the host machines
+      action: yum name='{{pkgname}}' state=present
+
